@@ -52,8 +52,9 @@ if (!class_exists('WPRadioDir_Main')) {
 		}
 
 		public static function plugin_activate() {
-            $include_dir = trailingslashit(plugin_dir_path(__FILE__)).trailingslashit('includes');
-            // require_once $include_dir.'admin/wp-radios-directory-admin.php';
+            $base_dir = trailingslashit(plugin_dir_path(__FILE__));
+
+			// require_once $base_dir.'admin/wp-radios-directory-admin.php';
             // WPRadioDir_Admin::set_default_options();
 		}
 
@@ -70,6 +71,8 @@ if (!class_exists('WPRadioDir_Main')) {
 		}
 
         public function includes() {
+			require_once WPRADIODIR_DIR.'admin/wp-radios-directory-admin.php';
+            new WPRadioDir_Admin();
 		}
 
 		/** Plugin helpers **/
